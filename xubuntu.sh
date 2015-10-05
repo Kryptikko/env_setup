@@ -16,5 +16,6 @@ echo -e "${Blue}Making CapsLock usefull ... ${Clean}"
 /usr/bin/setxkbmap -option 'caps:escape'
 
 echo "/usr/bin/setxkbmap -option 'caps:escape'" >> $HOME/.bashrc
+echo 'PS1=${PS1::(-3)}"$(__git_ps1)\[\033[00m\]\$ "' >> $HOME/.bashrc
 
 #source  $HOME/.bashrc
