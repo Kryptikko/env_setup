@@ -17,7 +17,7 @@ echo -e "${Blue}Installing Ubuntu packages ... ${Clean}"
 
 echo -e "${Blue}Making CapsLock usefull ... ${Clean}"
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
-
+#/usr/bin/setxkbmap -option "ctrl:nocaps" #xubuntu
 echo -e "${Blue}Setuping Vim ... ${Clean}"
 cp ./vimrc $HOME/.vimrc
 
