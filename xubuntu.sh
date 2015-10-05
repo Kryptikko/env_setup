@@ -6,12 +6,15 @@ Clean='\e[0;10m'
 
 sudo ./shared/linux.sh
 
-
 ./shared/vim.sh
-
-echo -e "${Blue}Making CapsLock usefull ... ${Clean}"
-dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
 
 echo -e "${Blue}Setuping Bash ... ${Clean}"
 #cp ./bashrc $HOME/.bashrc
+
+echo -e "${Blue}Making CapsLock usefull ... ${Clean}"
+/usr/bin/setxkbmap -option ''
+/usr/bin/setxkbmap -option 'caps:escape'
+
+echo "/usr/bin/setxkbmap -option 'caps:escape'" >> $HOME/.bashrc
+
 #source  $HOME/.bashrc
