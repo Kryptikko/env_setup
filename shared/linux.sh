@@ -11,6 +11,7 @@ fi
 
 echo -e "${Blue}Installing Ubuntu packages ... ${Clean}"
  apt-get install build-essential \
+ 				htop \
  				curl \
  				cmake \
  				git \
