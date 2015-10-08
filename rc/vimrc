@@ -27,5 +27,8 @@ set number
 :set regexpengine=1
 :syntax enable
 
+"fix for apps that monitor the fs (livereload etc)
+:set backupcopy=yes
+
 "removes trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
