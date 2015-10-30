@@ -4,7 +4,7 @@ Blue='\e[0;34m'
 Grey='\e[0;30m'
 Clean='\e[0;10m'
 
-sudo ./shared/linux.sh
+sudo ./shared/debian.sh
 
 
 ./shared/vim.sh
