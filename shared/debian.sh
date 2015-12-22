@@ -17,6 +17,7 @@ echo -e "${Blue}Installing Ubuntu packages ... ${Clean}"
  				git \
  				vim
 
+cp rc/gitignore $HOME/.gitignore
 #apt-get install silversearcher-ag
 #https://github.com/junegunn/fzf
 

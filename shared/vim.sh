@@ -5,7 +5,7 @@ Grey='\e[0;30m'
 Clean='\e[0;10m'
 
 echo -e "${Blue}Setuping Vim ... ${Clean}"
-cp ./../rc/vimrc $HOME/.vimrc
+cp rc/vimrc $HOME/.vimrc
 
 echo -e "${Grey}	Installing Pathogen ${Clean}"
 mkdir -p ~/.vim/autoload ~/.vim/bundle
