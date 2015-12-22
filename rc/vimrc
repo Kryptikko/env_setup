@@ -1,31 +1,44 @@
 execute pathogen#infect()
 
+set nocompatible
+scriptencoding utf-8
+
 syntax on
 set t_Co=256
 set background=dark
 color molokai
 
 "indenting
+filetype plugin indent on
+set nocindent
+set autoindent
 set shiftwidth=4
 set tabstop=4
+set smartindent
 
-set autoindent
-"set smartindent
 set wrap!
 
 "delimitMate config
-imap <C-c> <CR><Esc>O
+"imap <C-c> <CR><Esc>O
 
+set mouse=a 				" mouse support
 set number
+set cul
 
 "whitespace display
-:set pastetoggle=<f5>
-:set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-:set list
+set pastetoggle=<f5>
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
 
 "js indexting plugin configuration
-:set regexpengine=1
-:syntax enable
+set regexpengine=1
+
+
+set showmatch 				" show matching brackets
+"autocomplete
+set incsearch				" find as you type search
+set incsearch hlsearch		" highlight found items
+set wildmenu				" show list instead of just completing
 
 "fix for apps that monitor the fs (livereload etc)
 :set backupcopy=yes
