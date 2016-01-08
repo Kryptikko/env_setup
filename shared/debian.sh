@@ -22,6 +22,10 @@ echo -e "${Blue}Installing NodeJs .. ${Clean}"
 curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 apt-get install --yes nodejs
 
+echo -e "${Blue}Setupping Git .. ${Clean}"
+git config --global user.email "velin.br.vangelov@gmail.com"
+git config --global user.name "Kryptikko"
+
 cp rc/gitignore $HOME/.gitignore
 #apt-get install silversearcher-ag
 #https://github.com/junegunn/fzf
