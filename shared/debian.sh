@@ -9,6 +9,7 @@ if [ "$EUID" -ne 0 ]
 	exit
 fi
 
+
 echo -e "${Blue}Installing Ubuntu packages ... ${Clean}"
  apt-get install build-essential \
  				htop \
@@ -16,6 +17,10 @@ echo -e "${Blue}Installing Ubuntu packages ... ${Clean}"
  				cmake \
  				git \
  				vim
+
+echo -e "${Blue}Installing NodeJs .. ${Clean}"
+curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+apt-get install --yes nodejs
 
 cp rc/gitignore $HOME/.gitignore
 #apt-get install silversearcher-ag
