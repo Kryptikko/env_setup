@@ -1,0 +1,172 @@
+lua require('plugins')
+" Disable compatibility with vi which can cause unexpected issues.
+set nocompatible
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+filetype on
+" Enable plugins and load plugin for the detected file type.
+filetype plugin on
+" Load an indent file for the detected file type.
+filetype indent on
+" Do not save backup files.
+set nobackup
+set nowritebackup
+
+" Turn syntax highlighting on.
+syntax on
+set termguicolors
+set t_Co=256
+set background=dark
+colorscheme gruvbox
+
+" Add numbers to each line on the left-hand side.
+set number
+" Highlight cursor line underneath the cursor horizontally.
+set cursorline
+" Highlight cursor line underneath the cursor vertically.
+set cursorcolumn
+
+" --------- indenting -----------
+" Set shift width to 4 spaces.
+set shiftwidth=2
+" Set tab width to 4 columns.
+set tabstop=2
+" Use space characters instead of tabs.
+set expandtab
+
+
+" ------- search -------
+" While searching though a file incrementally highlight matching characters as you type.
+set incsearch
+" " Use highlighting when doing a search.
+set hlsearch
+" Ignore capital letters during search.
+set ignorecase
+" Override the ignorecase option if searching for capital letters.
+" This will allow you to search specifically for capital letters.
+set smartcase
+" Show matching words during a search.
+set showmatch
+
+" Do not wrap lines. Allow long lines to extend as far as the line goes.
+"set nowrap
+set wrap!
+
+" ----- bottom line -----
+" Show partial command you type in the last line of the screen.
+set showcmd
+" Show the mode you are on the last line.
+set showmode
+" Set the commands to save in history default number is 20.
+set history=1000
+" Enable auto completion menu after pressing TAB.
+set wildmenu
+" Make wildmenu behave like similar to Bash completion. TBD
+set wildmode=list:longest
+
+" moouse support
+set mouse=a 				" mouse support
+set cul
+
+" parse lines
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
+
+"js indexting plugin configuration
+set regexpengine=1
+
+"fix for apps that monitor the fs (livereload etc)
+set backupcopy=yes
+set backspace=indent,eol,start
+
+"removes trailing whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" in case you can't remap capslock use this
+" Set the backslash as the leader key.
+" let mapleader = "\"
+" Press \\ to jump back to the last cursor position.
+" nnoremap <leader>\ ``
+
+" / ************** ADDONG CONFIGURATIONS **************** /
+
+" ctrp config
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|ext|test|docs)|(\.(swp|ico|git|svn))$'
+
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" vim plug installation
+"curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+" nvim plug installation
+" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+"        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
+
+" CoC extensions configurations
+let g:coc_global_extensions = ['coc-tsserver']
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use <c-space> to trigger completion
+" if has('nvim')
+"   inoremap <silent><expr> <c-space> coc#refresh()
+" else
+"   inoremap <silent><expr> <c-@> coc#refresh()
+" endif
+" https://github.com/neoclide/coc.nvim#example-vim-configuration more cock
+
+call plug#begin('~/.nvim/plugged')
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+Plug 'https://github.com/mileszs/ack.vim.git'
+" Plug 'https://github.com/dense-analysis/ale.git'
+" ale aleternative
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/tomtom/tcomment_vim.git'
+" js highlight
+Plug 'https://github.com/pangloss/vim-javascript.git'
+" typescrupt highlight
+Plug 'https://github.com/leafgarland/typescript-vim.git'
+Plug 'https://github.com/aserebryakov/vim-todo-lists.git'
+Plug 'ellisonleao/gruvbox.nvim'
+Plug 'https://github.com/tpope/vim-surround.git'
+" jsx supprot
+Plug 'maxmellon/vim-jsx-pretty'
+
+" CoPilot
+Plug 'https://github.com/github/copilot.vim.git'
+
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Using a non-default branch
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+call plug#end()
